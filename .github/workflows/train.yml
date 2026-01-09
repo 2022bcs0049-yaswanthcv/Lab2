@@ -43,7 +43,7 @@ jobs:
       - name: Upload artifacts (model + results)
         uses: actions/upload-artifact@v4
         with:
-          name: lab2-artifacts
+          name: lab2-run-${{ github.run_number }}
           path: |
             output/model.pkl
             output/results.json
