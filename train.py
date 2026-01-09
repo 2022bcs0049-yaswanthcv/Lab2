@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import Lasso
 from sklearn.metrics import mean_squared_error, r2_score
 
 
@@ -31,7 +31,7 @@ def main():
     # Model pipeline (scaling + regression)
     model = Pipeline([
         ("scaler", StandardScaler()),
-        ("regressor", Ridge(alpha=1.0))
+        ("regressor", Lasso(alpha=0.1))
     ])
 
     model.fit(X_train, y_train)
