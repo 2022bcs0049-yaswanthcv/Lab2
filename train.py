@@ -6,7 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.pipeline import Pipeline
-from sklearn.linear_model import Ridge
+from sklearn.linear_model import Lasso
 from sklearn.metrics import mean_squared_error, r2_score
 
 
@@ -25,13 +25,13 @@ def main():
     y = df["quality"]
 
     X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.2, random_state=42
+        X, y, test_size=0.3, random_state=42
     )
 
     # Model pipeline (scaling + regression)
     model = Pipeline([
         ("scaler", MinMaxScaler()),
-        ("regressor", Ridge(alpha=1.0))
+        ("regressor", Lasso(alpha=0.1))
     ])
 
     model.fit(X_train, y_train)
